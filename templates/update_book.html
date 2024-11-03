@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Book - {{ book.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Update Book - {{ book.title }}</h1>
+
+        <form action="{{ url_for('update_book', book_id=book.id) }}" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-lg p-8">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="mb-4">
+                    <label for="id" class="block text-sm font-medium text-gray-700">ID:</label>
+                    <input type="text" id="id" name="id" value="{{ book.id }}" readonly class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
+                    <input type="text" id="title" name="title" value="{{ book.title }}" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="authors" class="block text-sm font-medium text-gray-700">Authors:</label>
+                    <input type="text" id="authors" name="authors" value="{{ book.authors }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="cover" class="block text-sm font-medium text-gray-700">Cover:</label>
+                    <input type="text" id="cover" name="cover" value="{{ book.cover }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="cover_image" class="block text-sm font-medium text-gray-700">Upload New Cover Image:</label>
+                    <input type="file" id="cover_image" name="cover_image" accept=".png,.jpg,.jpeg" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="status" class="block text-sm font-medium text-gray-700">Status:</label>
+                    <select id="status" name="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        {% for status in statuses %}
+                            <option value="{{ status }}" {% if book.status == status %}selected{% endif %}>{{ status }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="current_page" class="block text-sm font-medium text-gray-700">Current Page:</label>
+                    <input type="number" id="current_page" name="current_page" value="{{ book.current_page }}" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="pageCount" class="block text-sm font-medium text-gray-700">Page Count:</label>
+                    <input type="number" id="pageCount" name="pageCount" value="{{ book.pageCount }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="averageRating" class="block text-sm font-medium text-gray-700">Average Rating:</label>
+                    <input type="number" id="averageRating" name="averageRating" value="{{ book.averageRating }}" step="0.1" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="is_favorite" class="block text-sm font-medium text-gray-700">Favorite:</label>
+                    <select id="is_favorite" name="is_favorite" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="1" {% if book.is_favorite == 1 %}selected{% endif %}>Yes</option>
+                        <option value="0" {% if book.is_favorite == 0 %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="industryIdentifiers" class="block text-sm font-medium text-gray-700">Industry Identifiers:</label>
+                    <input type="text" id="industryIdentifiers" name="industryIdentifiers" value="{{ book.industryIdentifiers }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <div class="mb-4">
+                    <label for="is_enabled" class="block text-sm font-medium text-gray-700">Enabled:</label>
+                    <select id="is_enabled" name="is_enabled" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="1" {% if book.is_enabled == 1 %}selected{% endif %}>Yes</option>
+                        <option value="0" {% if book.is_enabled == 0 %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 md:col-span-2">
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
+                    <textarea id="description" name="description" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">{{ book.description }}</textarea>
+                </div>
+
+                <div class="mb-4 md:col-span-2">
+                    <label for="cover_path" class="block text-sm font-medium text-gray-700">Cover Path:</label>
+                    <input type="text" id="cover_path" name="cover_path" value="{{ book.cover_path }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200 font-semibold">Update</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="inline-block mt-4 text-blue-600 hover:underline font-medium">Back to My Books</a>
+    </div>
+</body>
+</html>

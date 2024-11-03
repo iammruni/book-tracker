@@ -1,0 +1,135 @@
+/* Base styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2C3E50;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Container styling */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Book section styling */
+.book-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+/* Book card styling */
+.book-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    width: calc(25% - 30px);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.book-card strong {
+    font-size: 1.2em;
+    color: #34495e;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.book-card p {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+.book-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.95em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.book-card a:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Add Book Button */
+.add-book {
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 1.1em;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-book:hover {
+    background-color: #27ae60;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+    .book-card {
+        width: calc(33.33% - 30px); /* Three cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .book-card {
+        width: calc(50% - 30px); /* Two cards per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .book-card {
+        width: 90%; /* One card per row */
+    }
+}

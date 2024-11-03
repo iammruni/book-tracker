@@ -1,6 +1,7 @@
 # Book Tracker
 
-Welcome to my Book Tracker! This simple tool helps me keep track of my reading journey, even if I sometimes spend more time on it than actually reading the books!
+Welcome to my Book Tracker! This simple tool helps me keep track of my reading journey, even if I sometimes spend more time on it than actually reading the books!<br>
+_(I was bored. This is not exceptional, but it works for me)_
 
 ## Features
 
@@ -43,5 +44,5 @@ Welcome to my Book Tracker! This simple tool helps me keep track of my reading j
 *Easily update a book's information when needed*
 
 ## Miscellaneous
-![Adding Extra Fields](/README_IMGS/7.png)
+![Adding Extra Fields](/README_IMGS/7.png)</br>
 *This dictionary contains custom fields along with fields from the [Google Books API response](https://developers.google.com/books/docs/v1/reference/volumes). When adding a new field here, make sure it is also defined in the database. This ensures that it will be captured and stored in the database each time a new book is added.*
